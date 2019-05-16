@@ -1,0 +1,48 @@
+max virtual memory areas vm.max_map_count [65530] is too low
+
+solutions：
+先要切换到root用户；
+然后可以执行以下命令，设置 vm.max_map_count ，但是重启后又会恢复为原值。
+sysctl -w vm.max_map_count=262144
+
+持久性的做法是在 /etc/sysctl.conf 文件中修改 vm.max_map_count 参数：
+echo "vm.max_map_count=262144" > /etc/sysctl.conf
+sysctl -p
+
+作者：CodeSheep
+链接：https://www.jianshu.com/p/04f4d7b4a1d3
+来源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
+
+
+Note: From version 207 and 21x, systemd only applies settings from /etc/sysctl.d/*.conf and /usr/lib/sysctl.d/*.conf. If you had customized /etc/sysctl.conf, you need to rename it as /etc/sysctl.d/99-sysctl.conf. If you had e.g. /etc/sysctl.d/foo, you need to rename it to /etc/sysctl.d/foo.conf.
+
+https://wiki.archlinux.org/index.php/sysctl
+
+
+
+es_master_1    | [0.000s][error][logging] Error opening log file 'logs/gc.log': Permission denied
+es_master_1    | [0.000s][error][logging] Initialization of output 'file=logs/gc.log' using options 'filecount=32,filesize=64m' failed.
+
+挂载问题
+
+sudo chmod -R 777 data  
+sudo chmod -R 777 logs   
+
+
+docker exec -it es_master_1 bash
+[root@db185702785e elasticsearch]# ping es_master_2
+PING es_master_2 (172.18.0.3) 56(84) bytes of data.
+64 bytes from es_master_2.es-docker-demo_default (172.18.0.3): icmp_seq=1 ttl=64 time=0.122 ms
+64 bytes from es_master_2.es-docker-demo_default (172.18.0.3): icmp_seq=2 ttl=64 time=0.113 ms
+64 bytes from es_master_2.es-docker-demo_default (172.18.0.3): icmp_seq=3 ttl=64 time=0.132 ms
+64 bytes from es_master_2.es-docker-demo_default (172.18.0.3): icmp_seq=4 ttl=64 time=0.115 ms
+64 bytes from es_master_2.es-docker-demo_default (172.18.0.3): icmp_seq=5 ttl=64 time=0.152 ms
+64 bytes from es_master_2.es-docker-demo_default (172.18.0.3): icmp_seq=6 ttl=64 time=0.106 ms
+64 bytes from es_master_2.es-docker-demo_default (172.18.0.3): icmp_seq=7 ttl=64 time=0.113 ms
+^C
+--- es_master_2 ping statistics ---
+7 packets transmitted, 7 received, 0% packet loss, time 6078ms
+rtt min/avg/max/mdev = 0.106/0.121/0.152/0.020 ms
+[root@db185702785e elasticsearch]# curl 'es_master_2:9200/_nodes'
+{"_nodes":{"total":1,"successful":1,"failed":0},"cluster_name":"EsCluster","nodes":{"rs…………

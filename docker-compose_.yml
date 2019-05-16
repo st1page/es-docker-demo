@@ -1,0 +1,114 @@
+version: '3'
+services:
+  es_master_1:
+    image: elasticsearch:7.0.1
+    container_name: es_master_1
+    privileged: true
+    environment:
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data/master_1:/usr/share/elasticsearch/data
+      - ./logs/master_1:/usr/share/elasticsearch/logs  
+      - ./es_master.yml:/usr/share/elasticsearch/config/elasticsearch.yml 
+  es_master_2:
+    image: elasticsearch:7.0.1
+    container_name: es_master_2
+    privileged: true
+    environment:
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data/master_2:/usr/share/elasticsearch/data
+      - ./logs/master_2:/usr/share/elasticsearch/logs  
+      - ./es_master.yml:/usr/share/elasticsearch/config/elasticsearch.yml 
+  es_master_3:
+    image: elasticsearch:7.0.1
+    container_name: es_master_3
+    privileged: true
+    environment:
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data/master_3:/usr/share/elasticsearch/data
+      - ./logs/master_3:/usr/share/elasticsearch/logs  
+      - ./es_master.yml:/usr/share/elasticsearch/config/elasticsearch.yml 
+  es_data_1:
+    image: elasticsearch:7.0.1
+    container_name: es_data_1
+    privileged: true
+    environment:
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data/data_1:/usr/share/elasticsearch/data
+      - ./logs/data_1:/usr/share/elasticsearch/logs  
+      - ./es_data.yml:/usr/share/elasticsearch/config/elasticsearch.yml 
+  es_data_2:
+    image: elasticsearch:7.0.1
+    container_name: es_data_2
+    privileged: true
+    environment:
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data/data_2:/usr/share/elasticsearch/data
+      - ./logs/data_2:/usr/share/elasticsearch/logs  
+      - ./es_data.yml:/usr/share/elasticsearch/config/elasticsearch.yml 
+  es_data_3:
+    image: elasticsearch:7.0.1
+    container_name: es_data_3
+    privileged: true
+    environment:
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data/data_3:/usr/share/elasticsearch/data
+      - ./logs/data_3:/usr/share/elasticsearch/logs  
+      - ./es_data.yml:/usr/share/elasticsearch/config/elasticsearch.yml 
+  es_data_4:
+    image: elasticsearch:7.0.1
+    container_name: es_data_4
+    privileged: true
+    environment:
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data/data_4:/usr/share/elasticsearch/data
+      - ./logs/data_4:/usr/share/elasticsearch/logs  
+      - ./es_data.yml:/usr/share/elasticsearch/config/elasticsearch.yml 
+  es_data_5:
+    image: elasticsearch:7.0.1
+    container_name: es_data_5
+    privileged: true
+    environment:
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data/data_5:/usr/share/elasticsearch/data
+      - ./logs/data_5:/usr/share/elasticsearch/logs  
+      - ./es_data.yml:/usr/share/elasticsearch/config/elasticsearch.yml

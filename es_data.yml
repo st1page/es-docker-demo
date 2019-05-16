@@ -1,0 +1,9 @@
+cluster.name: EsCluster
+node.master: false
+node.data: true
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+network.host: _site_ 
+discovery.seed_hosts: ["es_master_1","es_master_2","es_master_3"]
+cluster.initial_master_nodes: ["es_master_1","es_master_2","es_master_3"]
+bootstrap.memory_lock: true
