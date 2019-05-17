@@ -125,11 +125,11 @@ services:
     container_name: kibana
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - SERVER_NAME=kibana
-      - ELASTICSEARCH_HOSTS=http://es_master_1:9200
-      - XPACK_MONITORING_ENABLED=true
     ports:
       - 5601:5601
+    volumes:
+      - ./kibana.yml:/usr/share/kibana/config/kibana.yml  
     depends_on:
       - es_master_1
- 
+      - es_master_2
+      - es_master_3
